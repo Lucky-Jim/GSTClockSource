@@ -14,7 +14,7 @@ GST_STATIC_PAD_TEMPLATE (
 static GstStaticPadTemplate source_factory =
 GST_STATIC_PAD_TEMPLATE (
   "source",
-  GST_PAD_SOURCE,
+  GST_PAD_SRC,
   GST_PAD_ALWAYS,
   GST_STATIC_CAPS ("ANY")
 );
