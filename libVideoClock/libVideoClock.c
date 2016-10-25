@@ -57,7 +57,7 @@ gst_my_filter_class_init (GstMyFilterClass * klass)
 
 
   gst_element_class_add_pad_template (element_class,
-  	gst_static_pad_template_get (&sink_factory));
+  	gst_static_pad_template_get (&source_factory));
 
 }
 
@@ -66,17 +66,13 @@ static void
 gst_my_filter_init (GstMyFilter *filter)
 {
   /* pad through which data comes in to the element */
-  filter->sinkpad = gst_pad_new_from_static_template (
-	&sink_template, "sink");
+  filter->sinkpad = gst_pad_new_from_static_template ( &sink_factory, "sink");
+
   /* pads are configured here with gst_pad_set_*_function () */
-
-
-
   gst_element_add_pad (GST_ELEMENT (filter), filter->sinkpad);
 
   /* pad through which data goes out of the element */
-  filter->srcpad = gst_pad_new_from_static_template (
-	&src_template, "src");
+  filter->srcpad = gst_pad_new_from_static_template ( &source_factory, "src");
   /* pads are configured here with gst_pad_set_*_function () */
 
 
